@@ -7,36 +7,36 @@ namespace POS_Retail.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CategoryController : ControllerBase
     {
-        ICustomerService customerService;
+        ICategoryService customerService;
 
-        public CustomerController(ICustomerService _customerService)
+        public CategoryController(ICategoryService _customerService)
         {
             customerService = _customerService;
 
         }
-        
 
 
-        // GET: CustomerController/Details/5
+
+        // GET: CategoryController/Details/5
         [Microsoft.AspNetCore.Mvc.HttpGet]
-        public Customer Details(int id)
+        public Category Details(int id)
         {
-            var data = customerService.GetCustomerById(id);
+            var data = customerService.GetCategoryById(id);
             return data;
         }
 
-        // GET: CustomerController/Create
+        // GET: CategoryController/Create
 
-        // POST: CustomerController/Create
+        // POST: CategoryController/Create
         [Microsoft.AspNetCore.Mvc.HttpPost]
-        
-        public void Create(Customer model)
+
+        public void Create(Category model)
         {
             try
             {
-                customerService.AddCustomer(model);
+                customerService.AddCategory(model);
             }
             catch (Exception ex)
             {
@@ -45,14 +45,14 @@ namespace POS_Retail.Controllers
         }
 
 
-        // POST: CustomerController/Edit/5
+        // POST: CategoryController/Edit/5
         [Microsoft.AspNetCore.Mvc.HttpPost]
-        [Route("EditCustomer")]
-        public void Edit(int id, Customer model)
+        [Route("EditCategory")]
+        public void Edit(int id, Category model)
         {
             try
             {
-                customerService.UpdateCustomer(model);
+                customerService.UpdateCategory(model);
             }
             catch
             {
@@ -60,12 +60,12 @@ namespace POS_Retail.Controllers
             }
         }
 
-        // GET: CustomerController/Delete/5
+        // GET: CateogryController/Delete/5
         [HttpGet]
-        [Route("CustomerDelete")]
+        [Route("CategoryDelete")]
         public string Delete(int id)
         {
-            customerService.DeleteCustomer(id);
+            customerService.DeleteCategory(id);
 
             return "Deleted Record Successfully";
         }
@@ -73,3 +73,4 @@ namespace POS_Retail.Controllers
 
     }
 }
+

@@ -7,23 +7,23 @@ namespace POS_Retail.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class InventoryController : ControllerBase
     {
-        ICustomerService customerService;
+        IinventoryService inventoryService;
 
-        public CustomerController(ICustomerService _customerService)
+        public InventoryController(IinventoryService _inventoryService)
         {
-            customerService = _customerService;
+            inventoryService = _inventoryService;
 
         }
-        
+
 
 
         // GET: CustomerController/Details/5
         [Microsoft.AspNetCore.Mvc.HttpGet]
-        public Customer Details(int id)
+        public Inventory Details(int id)
         {
-            var data = customerService.GetCustomerById(id);
+            var data = inventoryService.GetInventoryById(id);
             return data;
         }
 
@@ -31,12 +31,12 @@ namespace POS_Retail.Controllers
 
         // POST: CustomerController/Create
         [Microsoft.AspNetCore.Mvc.HttpPost]
-        
-        public void Create(Customer model)
+
+        public void Create(Inventory model)
         {
             try
             {
-                customerService.AddCustomer(model);
+                inventoryService.AddInventory(model);
             }
             catch (Exception ex)
             {
@@ -47,12 +47,12 @@ namespace POS_Retail.Controllers
 
         // POST: CustomerController/Edit/5
         [Microsoft.AspNetCore.Mvc.HttpPost]
-        [Route("EditCustomer")]
-        public void Edit(int id, Customer model)
+        [Route("EditInventory")]
+        public void Edit(int id, Inventory model)
         {
             try
             {
-                customerService.UpdateCustomer(model);
+                inventoryService.UpdateInventory(model);
             }
             catch
             {
@@ -62,14 +62,13 @@ namespace POS_Retail.Controllers
 
         // GET: CustomerController/Delete/5
         [HttpGet]
-        [Route("CustomerDelete")]
+        [Route("InventoryDelete")]
         public string Delete(int id)
         {
-            customerService.DeleteCustomer(id);
+            inventoryService.DeleteInventory(id);
 
             return "Deleted Record Successfully";
         }
-
 
     }
 }

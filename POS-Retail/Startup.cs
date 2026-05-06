@@ -26,9 +26,31 @@ namespace POS_Retail
             services.AddScoped<IUnitofWork, Unitofwork>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ICustomerRepository<Customer>, CustomerRepository>();
-            
+            services.AddScoped<IinventoryService, InventoryService>();
+            services.AddScoped<IinventoryRepository<Inventory>, InventoryRepository>();
+            services.AddScoped<IProductService,ProductService>();
+            services.AddScoped<IProductRepository<Product>, ProductRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICategoryRepository<Category>, CategoryRepository>();
 
+            services.AddScoped<IPurchaseOrderService, PurchaseOrderService>();
+            services.AddScoped<IPurchaseOrderRepository<PurchaseOrder>, PurchaseOrderRepository>();
 
+            services.AddScoped<IPurchaseOrderDetailService, PurchaseOrderDetailService>();
+            services.AddScoped<IPurchaseOrderDetailRepository<PurchaseOrderDetail>, PurchaseOrderDetailRepository>();
+
+            services.AddScoped<ISalesOrderService, SalesOrderService>();
+            services.AddScoped<ISalesOrderRepository<SalesOrder>, SalesOrderRepository>();
+
+            services.AddScoped<ISalesOrderDetailService, SalesOrderDetailService>();
+            services.AddScoped<ISalesOrderDetailRepository<SalesOrderDetail>, SalesOrderDetailRepository>();
+
+            services.AddScoped<ISupplierService, SupplierService>();
+            services.AddScoped<ISupplierRepository<Supplier>, SupplierRepository>();
+
+            services.AddScoped<IWareHouseService, WareHouseService>();
+            services.AddScoped<IWareHouseRepository<WareHouse>, WareHouseRepository>();
+        
         }
 
 
