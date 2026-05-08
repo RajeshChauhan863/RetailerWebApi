@@ -1,5 +1,6 @@
 ﻿using BAL;
 using DAL.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,11 +8,12 @@ namespace POS_Retail.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProuductController : ControllerBase
+    [AllowAnonymous]
+    public class ProductController : ControllerBase
     {
         IProductService productService;
 
-        public ProuductController(IProductService _productService)
+        public ProductController(IProductService _productService)
         {
             productService = _productService;
 
