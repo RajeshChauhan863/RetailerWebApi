@@ -50,7 +50,19 @@ namespace POS_Retail
 
             services.AddScoped<IWareHouseService, WareHouseService>();
             services.AddScoped<IWareHouseRepository<WareHouse>, WareHouseRepository>();
-        
+
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5173") // React app origin
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
+
         }
 
 
@@ -74,7 +86,7 @@ namespace POS_Retail
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseCors("AllowFrontend");
             app.UseAuthentication();
             app.UseAuthorization();
         }

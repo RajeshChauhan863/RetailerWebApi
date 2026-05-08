@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Models;
 
 public partial class Product
 {
+
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Key]
     public int ProductId { get; set; }
 
     public string? Name { get; set; }
