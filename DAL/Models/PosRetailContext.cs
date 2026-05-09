@@ -37,7 +37,7 @@ public partial class PosRetailContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-DCA8OV5\\SQLEXPRESS;Database=POS-Retail;User Id=sa;Password=admin@123;TrustServerCertificate=True;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-DCA8OV5\\SQLEXPRESS;Database=POS-AI;User Id=sa;Password=admin@123;TrustServerCertificate=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -86,20 +86,25 @@ public partial class PosRetailContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.Property(e => e.ProductId).HasColumnName("Product_Id");
-            entity.Property(e => e.CategoryId).HasColumnName("Category_Id");
-            entity.Property(e => e.Description)
-                .HasMaxLength(150)
-                .IsUnicode(false);
+            entity.Property(e => e.ID).HasColumnName("ID");
             entity.Property(e => e.Name)
+            .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.SKU)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Category)
                 .HasMaxLength(150)
                 .IsUnicode(false);
-            entity.Property(e => e.ReOrderLevel)
-                .HasMaxLength(150)
-                .IsUnicode(false)
-                .HasColumnName("ReOrder_Level");
-            entity.Property(e => e.SupplierId).HasColumnName("Supplier_Id");
-            entity.Property(e => e.UnitPrice).HasColumnName("Unit_Price");
+            entity.Property(e => e.Price)
+                .HasColumnType("numeric(18, 0)")
+                .HasColumnName("Price");
+            entity.Property(e => e.Stock)
+             .HasColumnType("numeric(18, 0)")
+                .HasColumnName("Stock");
+            entity.Property(e => e.Status)
+            .HasMaxLength(50)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<PurchaseOrder>(entity =>
