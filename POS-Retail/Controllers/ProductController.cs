@@ -31,15 +31,16 @@ namespace POS_Retail.Controllers
         // POST: ProductController/Create
         [Microsoft.AspNetCore.Mvc.HttpPost]
 
-        public void Create(Product model)
+        public IActionResult Create(Product model)
         {
             try
             {
                 productService.AddProduct(model);
+                return Ok(200);
             }
             catch (Exception ex)
             {
-                return;
+                return Ok(400);
             }
         }
 
@@ -47,15 +48,16 @@ namespace POS_Retail.Controllers
         // POST: ProductController/Edit/5
         [Microsoft.AspNetCore.Mvc.HttpPost]
         [Route("EditProduct")]
-        public void Edit(int id, Product model)
+        public IActionResult Edit(int id, Product model)
         {
             try
             {
                 productService.UpdateProduct(model);
+                return Ok(200);
             }
             catch
             {
-                return;
+                return Ok(400);
             }
         }
 
