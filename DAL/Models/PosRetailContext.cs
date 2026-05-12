@@ -57,18 +57,21 @@ public partial class PosRetailContext : DbContext
 
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.Property(e => e.CustomerId).HasColumnName("Customer_Id");
-            entity.Property(e => e.Address)
+            entity.Property(e => e.ID).HasColumnName("ID");
+            entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.CustomerName)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("Customer_Name");
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
-                .IsUnicode(false);
+                .IsUnicode(false)
+                .HasColumnName("Email");
             entity.Property(e => e.Phone)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Address)
+                .HasMaxLength(150)
+                .IsUnicode(false);
+            entity.Property(e => e.Status)
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
