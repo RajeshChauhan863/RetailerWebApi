@@ -32,15 +32,16 @@ namespace POS_Retail.Controllers
         // POST: CustomerController/Create
         [Microsoft.AspNetCore.Mvc.HttpPost]
         
-        public void Create(Customer model)
+        public IActionResult Create(Customer model)
         {
             try
             {
                 customerService.AddCustomer(model);
+                return Ok(200);
             }
             catch (Exception ex)
             {
-                return;
+                return Ok(400);
             }
         }
 
