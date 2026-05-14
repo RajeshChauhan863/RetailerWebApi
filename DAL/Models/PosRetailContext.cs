@@ -37,7 +37,7 @@ public partial class PosRetailContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-DCA8OV5\\SQLEXPRESS;Database=POS-AI;User Id=sa;Password=admin@123;TrustServerCertificate=True;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-DCA8OV5\\SQLEXPRESS;Database=POS-AI;User Id=sa;Password=admin@123;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -80,11 +80,24 @@ public partial class PosRetailContext : DbContext
         {
             entity.ToTable("Inventory");
 
-            entity.Property(e => e.InventoryId).HasColumnName("Inventory_Id");
-            entity.Property(e => e.LastUpdated).HasColumnName("Last_updated");
-            entity.Property(e => e.ProductId).HasColumnName("Product_id");
-            entity.Property(e => e.QuantityInStock).HasColumnName("Quantity_in_stock");
-            entity.Property(e => e.WarehouseId).HasColumnName("Warehouse_id");
+            entity.Property(e => e.ID).HasColumnName("ID");
+            entity.Property(e => e.Name)
+            .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.SKU)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Category)
+                .HasMaxLength(150)
+                .IsUnicode(false);
+            entity.Property(e => e.Location)
+                .HasMaxLength(150)
+                .HasColumnName("Location");
+            entity.Property(e => e.Stock)
+                .HasColumnName("Stock");
+            entity.Property(e => e.Status)
+            .HasMaxLength(50)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<Product>(entity =>

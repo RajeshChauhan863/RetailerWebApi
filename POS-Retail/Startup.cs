@@ -28,8 +28,8 @@ namespace POS_Retail
             services.AddScoped<ICustomerRepository<Customer>, CustomerRepository>();
             services.AddScoped<IinventoryService, InventoryService>();
             services.AddScoped<IinventoryRepository<Inventory>, InventoryRepository>();
-            services.AddScoped<IProductService,ProductService>();
             services.AddScoped<IProductRepository<Product>, ProductRepository>();
+            services.AddScoped<IProductService,ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICategoryRepository<Category>, CategoryRepository>();
 

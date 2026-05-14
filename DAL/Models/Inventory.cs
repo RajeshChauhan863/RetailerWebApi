@@ -1,17 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Models;
 
 public partial class Inventory
 {
-    public int InventoryId { get; set; }
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Key]
+    public int ID { get; set; }
 
-    public int? ProductId { get; set; }
+    public string Name { get; set; }
 
-    public int? WarehouseId { get; set; }
+    public string SKU { get; set; }
 
-    public int? QuantityInStock { get; set; }
+    public string Category { get; set; }
 
-    public int? LastUpdated { get; set; }
+    public string Location { get; set; }
+
+    public string Stock { get; set; }
+
+    public string RecorderLevel { get; set; }
+
+    public string Status { get; set; }
+
+    
 }
